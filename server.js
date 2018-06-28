@@ -7,6 +7,11 @@ const mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 mongoose.Promise = global.Promise;
 
+require('./config/mongoose.js'); 
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(routes);
 
 app.listen(port, () => {
