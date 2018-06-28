@@ -2,9 +2,11 @@ const express = require('express');
 const routes = express.Router();
 const members = require('../models/names');
 
-// routes.get('/', (req, res) => {
-   
-// });
+routes.get('/', (req, res) => {
+  res.render('landing');
+});
+
+
 
 routes.post('/add', (req, res) => {
     members.create({
@@ -19,7 +21,7 @@ routes.post('/add', (req, res) => {
 });
 
 routes.delete('/remove', (req, res) => {
-    members.remove({ 
+    members.remove({
         name: req.body.name
     }, (err, result) => {
         if (err) {
