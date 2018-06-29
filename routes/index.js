@@ -3,7 +3,13 @@ const routes = express.Router();
 const members = require('../models/names');
 
 routes.get('/', (req, res) => {
-  res.render('landing');
+  members.find({}, (err,members) => {
+    if (err) {
+      console.log('you stupid')
+    } else {
+      res.render('landing', {members: members});
+    }
+  })
 });
 
 
@@ -16,11 +22,12 @@ routes.post('/add', (req, res) => {
             console.log(err);
         } else {
             console.log(result);
+            res.redirect('/')
         }
     });
 });
 
-routes.delete('/remove', (req, res) => {
+routes.post('/remove', (req, res) => {
     members.remove({
         name: req.body.name
     }, (err, result) => {
@@ -28,6 +35,7 @@ routes.delete('/remove', (req, res) => {
             console.log(err);
         } else {
             console.log(result);
+            res.redirect('/')
         }
     });
 });

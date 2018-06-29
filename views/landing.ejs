@@ -5,6 +5,22 @@
     <title></title>
   </head>
   <body>
-    hi
+    <form class="" action="/add" method="post">
+      <input type="text" name="name" placeholder="Add New Member, how exciting">
+      <input type="submit" name="" value="Submit">
+    </form>
+    <form class="" action="/remove" method="post">
+      <input type="text" name="name" placeholder="Remove a Member, how sad">
+      <input type="submit" name="" value="Submit">
+    </form>
+    <% let localList = [] %>
+    <% for (let i in members) { %>
+      <% localList.push(members[i].name) %>
+    <% } %>
+    <%= localList %>
+
+    <div class="">
+      
+    </div>
   </body>
 </html>
