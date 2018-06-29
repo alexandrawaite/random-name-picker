@@ -22,13 +22,22 @@
     <!-- <script>
       let list = <%= localList %>
     </script> -->
-    <div id='results'>
+    <div id='members'>
 
     </div>
-    <div class="">
+
+    <div id='result'>
 
     </div>
+
+    <div id='longList'>
+
+    </div>
+
+    <button id="reset" type="button" name="button">Reset</button>
     <button id="buttono" type="button" name="button">WHO'S NEXT!?</button>
+    <button id="instant" type="button" name="button">Don't wanna wait? Fine...</button>
+
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
@@ -36,10 +45,47 @@
       $(document).ready(() => {
         let names = $("p").html().toString()
         let stuff = names.split(",")
-        console.log(stuff)
-        $('#results').html(stuff)
+
+
+        //Create copy of array
+        let tempList = stuff.slice();
+
+        $('#members').html(tempList.join(', '))
+
         $("#buttono").click(() => {
-          // $('#results').html(stuff)
+          //Store randomized index for removal
+          let index = Math.floor(Math.random()*tempList.length);
+
+          //Pick random element
+          $('#result').html(tempList[index]);
+
+          //Remove random element by index
+          tempList.splice(index,1)
+          console.log(tempList);
+          $('#members').html(tempList.join(', '))
+          if (tempList.length == 1){
+            console.log('whoa!')
+          }
+        })
+
+        $("#reset").click(() => {
+          $('#result').text("Who's up?");
+
+          //Reset
+          tempList = stuff.slice();
+          $('#members').html(tempList.join(', '))
+        })
+        $("#instant").click(() => {
+          for (let i = tempList.length - 1;i > 0;i--){
+            const j = Math.floor(Math.random()*(i + 1));
+            [tempList[i], tempList[j]] = [tempList[j], tempList[i]]
+          }
+          console.log(tempList);
+          $('#result').html(tempList.join(', '));
+
+          //Reset
+          tempList = stuff.slice();
+          $('#members').html(tempList.join(', '))
         })
       })
     </script>
