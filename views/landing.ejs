@@ -39,10 +39,11 @@
         let names = $("p").html().toString()
         let stuff = names.split(",")
 
-        $('#members').html(stuff.join(', '))
 
         //Create copy of array
         let tempList = stuff.slice();
+
+        $('#members').html(tempList.join(', '))
 
         $("#buttono").click(() => {
           //Store randomized index for removal
@@ -53,6 +54,11 @@
 
           //Remove random element by index
           tempList.splice(index,1)
+          console.log(tempList);
+          $('#members').html(tempList.join(', '))
+          if (tempList.length == 1){
+            console.log('whoa!')
+          }
         })
 
         $("#reset").click(() => {
@@ -60,6 +66,7 @@
 
           //Reset
           tempList = stuff.slice();
+          $('#members').html(tempList.join(', '))
         })
       })
     </script>
