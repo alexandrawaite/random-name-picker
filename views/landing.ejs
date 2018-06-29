@@ -22,12 +22,14 @@
     <!-- <script>
       let list = <%= localList %>
     </script> -->
-    <div id='results'>
+    <div id='members'>
 
     </div>
-    <div class="">
+
+    <div id='result'>
 
     </div>
+    <button id="reset" type="button" name="button">Reset</button>
     <button id="buttono" type="button" name="button">WHO'S NEXT!?</button>
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
@@ -36,10 +38,28 @@
       $(document).ready(() => {
         let names = $("p").html().toString()
         let stuff = names.split(",")
-        console.log(stuff)
-        $('#results').html(stuff)
+
+        $('#members').html(stuff.join(', '))
+
+        //Create copy of array
+        let tempList = stuff.slice();
+
         $("#buttono").click(() => {
-          // $('#results').html(stuff)
+          //Store randomized index for removal
+          let index = Math.floor(Math.random()*tempList.length);
+
+          //Pick random element
+          $('#result').html(tempList[index]);
+
+          //Remove random element by index
+          tempList.splice(index,1)
+        })
+
+        $("#reset").click(() => {
+          $('#result').text("Who's up?");
+
+          //Reset
+          tempList = stuff.slice();
         })
       })
     </script>
