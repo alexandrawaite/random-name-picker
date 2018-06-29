@@ -18,7 +18,7 @@
     <% for (let i in members) { %>
       <% localList.push(members[i].name) %>
     <% } %>
-    <p><%= localList %></p>
+    <p style="display:none;"><%= localList %></p>
     <!-- <script>
       let list = <%= localList %>
     </script> -->
@@ -37,9 +37,9 @@
         let names = $("p").html().toString()
         let stuff = names.split(",")
         console.log(stuff)
-
+        $('#results').html(stuff)
         $("#buttono").click(() => {
-          $('#results').html(stuff)
+          // $('#results').html(stuff)
         })
       })
     </script>
