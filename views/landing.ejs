@@ -34,18 +34,20 @@
         <% localList.push(members[i].name) %>
         <% } %>
         <p style="display:none;"><%= localList %></p>
-      <div class="card text-center">
+      <div class="card text-center mt-5">
         <div class="card-header">
           Hat Picker!
         </div>
         <div class="card-body">
-          <h5 class="card-title">Remaining Members:</h5>
+          <h5 class="card-title">Who's up? Who's next?!</h5>
+          <p id="result">Next!</p>
+          <button class="btn btn-success" id="buttono" type="button" name="button">WHO'S NEXT!?</button>
+        </div>
+        <div class="card-footer">
           <p id='members' class="card-text"></p>
         </div>
       </div>
-      <!-- <div id='members'>
 
-      </div> -->
 
       <div id='result'>
 
@@ -55,7 +57,7 @@
 
       </div>
       <button class="btn btn-secondary" id="reset" type="button" name="button">Reset</button>
-      <button class="btn btn-success" id="buttono" type="button" name="button">WHO'S NEXT!?</button>
+      <!-- <button class="btn btn-success" id="buttono" type="button" name="button">WHO'S NEXT!?</button> -->
       <button class="btn btn-warning" id="instant" type="button" name="button">Don't wanna wait? Fine...</button>
     </div>
 
