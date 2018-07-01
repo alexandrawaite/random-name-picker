@@ -22,7 +22,7 @@
         </form>
         <form class="col-md-6" action="/remove" method="post">
           <div class="input-group">
-            <input class="form-control" type="text" name="name" placeholder="Add New Member, how exciting">
+            <input class="form-control" type="text" name="name" placeholder="Remove a member, how sad...">
             <div class="input-group-append">
               <input class="btn btn-outline-danger" type="submit" name="" value="REMOVE">
             </div>
@@ -34,9 +34,18 @@
         <% localList.push(members[i].name) %>
         <% } %>
         <p style="display:none;"><%= localList %></p>
-      <div id='members'>
-
+      <div class="card text-center">
+        <div class="card-header">
+          Hat Picker!
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Remaining Members:</h5>
+          <p id='members' class="card-text"></p>
+        </div>
       </div>
+      <!-- <div id='members'>
+
+      </div> -->
 
       <div id='result'>
 
