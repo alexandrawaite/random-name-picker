@@ -36,11 +36,11 @@
         <p style="display:none;"><%= localList %></p>
       <div class="card text-center mt-5">
         <div class="card-header">
-          Hat Picker!
+          Sorting hat, sort of.
         </div>
         <div class="card-body">
           <h5 class="card-title">Who's up? Who's next?!</h5>
-          <p id="result">Next!</p>
+          <p id="result">. . .</p>
           <button class="btn btn-success" id="buttono" type="button" name="button">WHO'S NEXT!?</button>
         </div>
         <div class="card-footer">
@@ -85,13 +85,14 @@
           tempList.splice(index,1)
           console.log(tempList);
           $('#members').html(tempList.join(', '))
-          if (tempList.length == 1){
+          if (tempList.length == 0){
             console.log('whoa!')
+            $('#members').html("All done. Feed me!")
           }
         })
 
         $("#reset").click(() => {
-          $('#result').text("Who's up?");
+          $('#result').text("iunno");
 
           //Reset
           tempList = stuff.slice();
