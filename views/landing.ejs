@@ -7,7 +7,7 @@
 
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-dark bg-dark">
       VMC Hat Picker!
     </nav>
     <div class="container">
@@ -68,7 +68,7 @@
         let names = $("p").html().toString()
         let stuff = names.split(",")
 
-
+        let phrase = ["You're up!", "Yes!", "Gry- Great!", "You're it!", "Take it away!"];
         //Create copy of array
         let tempList = stuff.slice();
 
@@ -103,10 +103,7 @@
             const j = Math.floor(Math.random()*(i + 1));
             [tempList[i], tempList[j]] = [tempList[j], tempList[i]]
           }
-          console.log(tempList);
           $('#result').html(tempList.join(', '));
-
-
         })
       })
     </script>
