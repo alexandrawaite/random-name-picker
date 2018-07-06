@@ -68,7 +68,7 @@
         let names = $("p").html().toString()
         let stuff = names.split(",")
 
-        let phrase = ["You're up!", "Yes!", "Gry- Great!", "You're it!", "Take it away!"];
+        let phraseList = ["You're up!", "Yes!", "Gry- Great!", "You're it!", "Take it away!", "Hu- Hello there!", "Rave... about it!", "S- Salutations!"];
         //Create copy of array
         let tempList = stuff.slice();
 
@@ -77,16 +77,18 @@
         $("#buttono").click(() => {
           //Store randomized index for removal
           let index = Math.floor(Math.random()*tempList.length);
-
+          let phrase = Math.floor(Math.random()*phraseList.length)
           //Pick random element
-          $('#result').html(tempList[index]);
+          $('#result').html(tempList[index]).append("! " + phraseList[phrase]);
 
           //Remove random element by index
           tempList.splice(index,1)
           console.log(tempList);
           $('#members').html(tempList.join(', '))
           if (tempList.length == 0){
-            console.log('whoa!')
+            //Disable function
+            $('#buttono').prop("disabled", true);
+
             $('#members').html("All done. Feed me!")
           }
         })
@@ -96,7 +98,8 @@
 
           //Reset
           tempList = stuff.slice();
-          $('#members').html(tempList.join(', '))
+          $('#members').html(tempList.join(', '));
+          $('#buttono').prop("disabled", false);
         })
         $("#instant").click(() => {
           for (let i = tempList.length - 1;i > 0;i--){
