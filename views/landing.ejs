@@ -87,7 +87,8 @@
           $('#members').html(tempList.join(', '))
           if (tempList.length == 0){
             //Disable function
-            $('#buttono').prop("disabled", true);
+            // $('#buttono').prop("disabled", true);
+            $('#buttono').html("STOP! STOP! NO MORE!").toggleClass('btn-danger').prop("disabled", true);
 
             $('#members').html("All done. Feed me!")
           }
@@ -99,7 +100,7 @@
           //Reset
           tempList = stuff.slice();
           $('#members').html(tempList.join(', '));
-          $('#buttono').prop("disabled", false);
+          $('#buttono').html("CLICK ME, CLICK ME NOW!").toggleClass('btn-danger').prop("disabled", false);
         })
         $("#instant").click(() => {
           for (let i = tempList.length - 1;i > 0;i--){
