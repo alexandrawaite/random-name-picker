@@ -67,8 +67,9 @@
       $(document).ready(() => {
         let names = $("p").html().toString()
         let stuff = names.split(",")
+        let diceRoll = Math.floor(Math.random()*6);
+        let phraseList = ["You're up!", "Yes!", "Gry- Great!", "You're it!", "Take it away!", "Hu- Hello there!", "Rave... about it!", "S- Salutations!", "Woohoo!", "Yay!"];
 
-        let phraseList = ["You're up!", "Yes!", "Gry- Great!", "You're it!", "Take it away!", "Hu- Hello there!", "Rave... about it!", "S- Salutations!"];
         //Create copy of array
         let tempList = stuff.slice();
 
@@ -77,7 +78,7 @@
         $("#buttono").click(() => {
           //Store randomized index for removal
           let index = Math.floor(Math.random()*tempList.length);
-          let phrase = Math.floor(Math.random()*phraseList.length)
+          let phrase = Math.floor(Math.random()*phraseList.length);
           //Pick random element
           $('#result').html(tempList[index]).append("! " + phraseList[phrase]);
 
