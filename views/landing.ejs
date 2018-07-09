@@ -49,13 +49,10 @@
       </div>
 
 
-      <div id='result'>
+      <div id='result'></div>
 
-      </div>
+      <!-- <div id='longList'></div> -->
 
-      <div id='longList'>
-
-      </div>
       <button class="btn btn-secondary" id="reset" type="button" name="button">Reset</button>
       <!-- <button class="btn btn-success" id="buttono" type="button" name="button">WHO'S NEXT!?</button> -->
       <button class="btn btn-warning" id="instant" type="button" name="button">Don't wanna wait? Fine...</button>
@@ -67,8 +64,8 @@
       $(document).ready(() => {
         let names = $("p").html().toString()
         let stuff = names.split(",")
-        let diceRoll = Math.floor(Math.random()*6);
-        let phraseList = ["You're up!", "Yes!", "Gry- Great!", "You're it!", "Take it away!", "Hu- Hello there!", "Rave... about it!", "S- Salutations!", "Woohoo!", "Yay!"];
+        // let diceRoll = Math.floor(Math.random()*6);
+        let phraseList = ["You're up!", "Yes!", "Gry- Great!", "You're it!", "Take it away!", "Hu- Hello there!", "Rave... about it!", "S- Salutations!", "Woohoo!", "Yay!", "Spotlight's on you!"];
 
         //Create copy of array
         let tempList = stuff.slice();
@@ -76,6 +73,9 @@
         $('#members').html(tempList.join(', '))
 
         $("#buttono").click(() => {
+          let diceRoll = Math.floor(Math.random()*7);
+          let diceRoll_2 = Math.floor(Math.random()*7);
+          console.log(diceRoll);
           //Store randomized index for removal
           let index = Math.floor(Math.random()*tempList.length);
           let phrase = Math.floor(Math.random()*phraseList.length);
