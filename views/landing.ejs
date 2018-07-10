@@ -65,7 +65,7 @@
         let names = $("p").html().toString()
         let stuff = names.split(",")
         // let diceRoll = Math.floor(Math.random()*6);
-        let phraseList = ["You're up!", "Yes!", "Gry- Great!", "You're it!", "Take it away!", "Hu- Hello there!", "Rave... about it!", "S- Salutations!", "Woohoo!", "Yay!", "Spotlight's on you!"];
+        let phraseList = ["You're up!", "Yes!", "Gry- Great!", "You're it!", "Take it away!", "Hu- Hello there!", "Rave... about it!", "S- Salutations!", "Woohoo!", "Yay!", "Spotlight's on you!", "Surprise!"];
 
         //Create copy of array
         let tempList = stuff.slice();
@@ -89,9 +89,9 @@
           if (tempList.length == 0){
             //Disable function
             // $('#buttono').prop("disabled", true);
-            $('#buttono').html("STOP! STOP! NO MORE!").toggleClass('btn-danger').prop("disabled", true);
+            $('#buttono').html("STOP! STOP! TO YOUR SEATS!").toggleClass('btn-danger').prop("disabled", true);
 
-            $('#members').html("All done. Feed me!")
+            $('#members').html("All done. Let the feasts begin!")
           }
         })
 
