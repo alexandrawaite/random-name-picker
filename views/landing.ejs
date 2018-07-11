@@ -14,7 +14,7 @@
       <div class="row mt-3">
         <form class="col-md-6" action="/add" method="post">
           <div class="input-group">
-            <input class="form-control" type="text" name="name" placeholder="Add New Member, how exciting">
+            <input class="form-control" type="text" name="name" placeholder="Add New Member, how exciting!">
             <div class="input-group-append">
               <input class="btn btn-outline-success" type="submit" name="" value="ADD">
             </div>
@@ -64,8 +64,7 @@
       $(document).ready(() => {
         let names = $("p").html().toString()
         let stuff = names.split(",")
-        // let diceRoll = Math.floor(Math.random()*6);
-        let phraseList = ["You're up!", "Yes!", "Gry- Great!", "You're it!", "Take it away!", "Hu- Hello there!", "Rave... about it!", "S- Salutations!", "Woohoo!", "Yay!", "Spotlight's on you!", "Surprise!","Hope you're awake!", "Haven't I seen you before?"];
+        let phraseList = ["You're up!", "Yes!", "Gry- Great!", "You're it!", "Take it away!", "Hu- Hello there!", "Rave... about it!", "S- Salutations!", "Woohoo!", "Yay!", "Spotlight's on you!", "Surprise!","Hope you're awake!", "Haven't I seen you before?", "Oh, it's you again.", "After all this time?", "10 points to-... You!"];
 
         //Create copy of array
         let tempList = stuff.slice();
@@ -73,9 +72,14 @@
         $('#members').html(tempList.join(', '))
 
         $("#buttono").click(() => {
-          let diceRoll = Math.floor(Math.random()*7);
-          let diceRoll_2 = Math.floor(Math.random()*7);
-          console.log(diceRoll);
+          let diceRoll = Math.floor(Math.random()*101);
+          let diceRoll_2 = Math.floor(Math.random()*101);
+
+          //Closer to 1% chance
+          if (diceRoll === diceRoll_2){
+            console.log('You won the 1% lottery!')
+          }
+
           //Store randomized index for removal
           let index = Math.floor(Math.random()*tempList.length);
           let phrase = Math.floor(Math.random()*phraseList.length);
@@ -88,7 +92,6 @@
           $('#members').html(tempList.join(', '))
           if (tempList.length == 0){
             //Disable function
-            // $('#buttono').prop("disabled", true);
             $('#buttono').html("STOP! STOP! TO YOUR SEATS!").toggleClass('btn-danger').prop("disabled", true);
 
             $('#members').html("All done. Let the feasts begin!")
