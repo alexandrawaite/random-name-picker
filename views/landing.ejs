@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <title>Daily Scrum Wheel!</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-
   </head>
   <body>
     <nav class="navbar navbar-dark bg-dark">
@@ -54,7 +53,6 @@
       <!-- <div id='longList'></div> -->
 
       <button class="btn btn-secondary" id="reset" type="button" name="button">Reset</button>
-      <!-- <button class="btn btn-success" id="buttono" type="button" name="button">WHO'S NEXT!?</button> -->
       <button class="btn btn-warning" id="instant" type="button" name="button">Don't wanna wait? Fine...</button>
     </div>
 
@@ -62,14 +60,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <script type="text/javascript">
       $(document).ready(() => {
-        let names = $("p").html().toString()
-        let stuff = names.split(",")
+        //Grab EJS variable and store it into an array
+        let names = $("p").html().toString();
+        let stuff = names.split(",");
         let phraseList = ["You're up!", "Yes!", "Gry- Great!", "You're it!", "Take it away!", "Hu- Hello there!", "Rave... about it!", "S- Salutations!", "Woohoo!", "Yay!", "Spotlight's on you!", "Surprise!","Hope you're awake!", "Haven't I seen you before?", "Oh, it's you again.", "After all this time?", "10 points to-... You!"];
 
-        //Create copy of array
+        //Create copy of array instead of just a reference
         let tempList = stuff.slice();
 
-        $('#members').html(tempList.join(', '))
+        $('#members').html(tempList.join(', '));
 
         $("#buttono").click(() => {
           let diceRoll = Math.floor(Math.random()*101);
@@ -77,24 +76,25 @@
 
           //Closer to 1% chance
           if (diceRoll === diceRoll_2){
-            console.log('You won the 1% lottery!')
+            console.log('You won the 1% lottery!');
           }
 
           //Store randomized index for removal
           let index = Math.floor(Math.random()*tempList.length);
           let phrase = Math.floor(Math.random()*phraseList.length);
+
           //Pick random element
           $('#result').html(tempList[index]).append("! " + phraseList[phrase]);
 
           //Remove random element by index
-          tempList.splice(index,1)
+          tempList.splice(index,1);
           console.log(tempList);
           $('#members').html(tempList.join(', '))
           if (tempList.length == 0){
             //Disable function
             $('#buttono').html("STOP! STOP! TO YOUR SEATS!").toggleClass('btn-danger').prop("disabled", true);
 
-            $('#members').html("All done. Let the feasts begin!")
+            $('#members').html("All done. Let the feasts begin!");
           }
         })
 
@@ -106,10 +106,12 @@
           $('#members').html(tempList.join(', '));
           $('#buttono').html("CLICK ME, CLICK ME NOW!").toggleClass('btn-danger').prop("disabled", false);
         })
+
+        //Generate entire shuffled list
         $("#instant").click(() => {
           for (let i = tempList.length - 1;i > 0;i--){
             const j = Math.floor(Math.random()*(i + 1));
-            [tempList[i], tempList[j]] = [tempList[j], tempList[i]]
+            [tempList[i], tempList[j]] = [tempList[j], tempList[i]];
           }
           $('#result').html(tempList.join(', '));
         })
