@@ -63,7 +63,7 @@
         //Grab EJS variable and store it into an array
         let names = $("p").html().toString();
         let stuff = names.split(",");
-        let phraseList = ["You're up!", "Yes!", "Gry- Great!", "You're it!", "Take it away!", "Hu- Hello there!", "Rave... about it!", "S- Salutations!", "Woohoo!", "Yay!", "Spotlight's on you!", "Surprise!","Hope you're awake!", "Haven't I seen you before?", "Oh, it's you again.", "After all this time?", "10 points to-... You!", "Yippie!"];
+        let phraseList = ["You're up!", "Yes!", "Gry- Great!", "You're it!", "Take it away!", "Hu- Hello there!", "Rave... about it!", "S- Salutations!", "Woohoo!", "Yay!", "Spotlight's on you!", "Surprise!","Hope you're awake!", "Haven't I seen you before?", "Oh, it's you again.", "After all this time?", "10 points to-... You!", "Yippie!", "No time like the present!"];
 
         //Create copy of array instead of just a reference
         let tempList = stuff.slice();
@@ -74,14 +74,15 @@
           let diceRoll = Math.floor(Math.random()*101);
           let diceRoll_2 = Math.floor(Math.random()*101);
 
+          //Store randomized index for removal
+          let index = Math.floor(Math.random()*tempList.length);
+          let phrase = Math.floor(Math.random()*phraseList.length);
+
           //Closer to 1% chance
           if (diceRoll === diceRoll_2){
             console.log('You won the 1% lottery!');
           }
 
-          //Store randomized index for removal
-          let index = Math.floor(Math.random()*tempList.length);
-          let phrase = Math.floor(Math.random()*phraseList.length);
 
           //Pick random element
           $('#result').html(tempList[index]).append("! " + phraseList[phrase]);
